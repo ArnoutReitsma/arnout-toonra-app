@@ -18,7 +18,7 @@ export default function Home() {
           Beyond coding, I thrive on my hobbies. Producing music, bouldering,
           mountain biking, and chess keep me creatively and physically engaged.
           I also have a penchant for concerts and festivals, enjoying the energy
-          of live (electronic) music.
+          of live (electronic) music and I love to travel!
         </p>
         <p>
           Web development, for me, is the perfect fusion of creativity and user
@@ -34,7 +34,7 @@ export default function Home() {
         </p>
       </div>
       <div className="mt-10 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <Link href="/music">
+        <Link href="/music" className="link-card">
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Music{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -46,7 +46,7 @@ export default function Home() {
             Inspired by dupstep, drum and bass and melodic bass.
           </p>
         </Link>
-        <Link href="/projects">
+        <Link href="/projects" className="link-card">
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Projects{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -57,7 +57,16 @@ export default function Home() {
             Have a look at some of my projects.
           </p>
         </Link>
-        <Link href="/contact">
+        <Link href="/blog" className="link-card">
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Blog{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Blogs, events & travel.</p>
+        </Link>
+        <Link href="/contact" className="link-card">
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Contact{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">

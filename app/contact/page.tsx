@@ -41,7 +41,7 @@ Message:
         </div>
         <button
           type="submit"
-          className="bg-sky-500 hover:bg-sky-700 rounded-3xl p-5 mt-3"
+          className="bg-gray-700 cursor-pointer  hover:bg-white hover:text-gray-800 hover:rounded-xl transition-all duration-300 ease-linear rounded-3xl p-5 mt-3"
         >
           Send
         </button>
