@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsSoundwave } from "react-icons/bs";
 import Player from "./Player";
 import { Song } from "./Song";
@@ -34,7 +34,8 @@ function MusicComponent({ songData }: { songData: Song[] }) {
   };
 
   return (
-    <div>
+    <div  className="flex min-h-screen flex-col items-center p-12">
+      <h1 className="font-extrabold text-4xl mb-5">Music produced by Toonra</h1>
       <ul>
         {songData.map((song: Song, index) => {
           return (
