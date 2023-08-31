@@ -8,19 +8,20 @@ export const fetchData = async () => {
   const songsData = querySnapshot.docs.map<Song>((doc) => ({
     title: doc.data().title,
     url: doc.data().url,
-  }));
+    album: doc.data().album,
+    genre: doc.data().genre,
+  })).filter(d => d.url != 'deleted');
   return songsData;
 };
 
-async function Music() {
+async function pageMusic() {
   const songData = await fetchData();
 
   return (
-    <div className="flex min-h-screen flex-col items-center p-12">
-      <h1 className="font-extrabold text-4xl mb-5">Music produced by Toonra</h1>
+    <div>
       <MusicComponent songData={songData}></MusicComponent>
     </div>
   );
 }
 
-export default Music;
+export default pageMusic;
