@@ -1,24 +1,33 @@
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-import { Song } from "../Song";
-export default async function PageAdd() {
-  const addSong = async (e: FormData) => {
-    "use server";
-    const title = e.get("title")?.toString();
-    const url = e.get("url")?.toString();
+"use client";
+import { ToastContainer, ToastOptions, toast } from "react-toastify";
+import { addSong } from "./AddSong";
+import { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
 
-    if (!title || !url) return;
-    const newSong: Song = {
-      title: title,
-      url: url,
-      genre: e.get("genre")?.toString(),
-      album: e.get("album")?.toString(),
-    };
-    await setDoc(doc(db, "toonra-song-collection", newSong.title), newSong);
-  };
+export default function PageAdd() {
+  async function onSubmit(formData: FormData) {
+    const res = await addSong(formData);
+    setMessage(res.message);
+    setKey(prevKey => prevKey+1);
+  }
+  const [toastMessage, setMessage] = useState<string>("");
+  const [key, setKey] = useState<number>(0);
+  useEffect(() => {
+    if (toastMessage) {
+      console.log(toastMessage);
+      toast(toastMessage, {
+        hideProgressBar: true,
+        autoClose: 2000,
+        position: "bottom-center",
+      });
+    }
+  }, [toastMessage, key]);
   return (
     <div>
-      <form action={addSong} className="flex min-h-screen flex-col items-center p-12">
+      <form
+        action={onSubmit}
+        className="flex min-h-screen flex-col items-center p-12"
+      >
         <h1>Add new Toonra track!</h1>
         <p>Title:</p>
         <input
@@ -61,6 +70,7 @@ export default async function PageAdd() {
           id="submit"
         />
       </form>
+      <ToastContainer />
     </div>
   );
 }
