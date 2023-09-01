@@ -1,27 +1,32 @@
 import { collection, getDocs } from "firebase/firestore";
 import MusicComponent from "./MusicComponent";
-import { Song, songData2 } from "./Song";
+import { Song, songData2 as backUpSongData } from "./Song";
 import { db } from "./firebaseConfig";
 
-export const fetchData = async () => {
-  const querySnapshot = await getDocs(collection(db, "toonra-song-collection"));
-  if (!querySnapshot) {
-    return songData2;
+export async function fetchData(): Promise<Song[]> {
+  try {
+    const querySnapshot = await getDocs(
+      collection(db, "toonra-song-collection")
+    );
+    const songsData: Song[] = querySnapshot.docs
+      .map(
+        (doc) =>
+          ({
+            title: doc.data().title,
+            url: doc.data().url,
+            album: doc.data().album,
+            genre: doc.data().genre,
+          }) as Song
+      )
+      .filter((d) => d.url != "deleted") as Song[];
+    return songsData;
+  } catch {
+    return backUpSongData;
   }
-  const songsData = querySnapshot.docs
-    .map<Song>((doc) => ({
-      title: doc.data().title,
-      url: doc.data().url,
-      album: doc.data().album,
-      genre: doc.data().genre,
-    }))
-    .filter((d) => d.url != "deleted");
-
-  return songsData;
-};
+}
 
 async function pageMusic() {
-  const songData = await fetchData();
+  const songData: Song[] = await fetchData();
 
   return (
     <div>
