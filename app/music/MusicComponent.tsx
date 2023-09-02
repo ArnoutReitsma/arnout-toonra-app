@@ -10,9 +10,11 @@ function MusicComponent({ songData }: { songData: Song[] }) {
   const [songs, setSongs] = useState(songData);
   const [currentSong, setCurrentSong] = useState(songData[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [trigger, setTrigger] = useState(0);
   let audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    console.log('useEffect');
     if (isPlaying) {
       audioRef.current.play();
     } else {
@@ -33,8 +35,12 @@ function MusicComponent({ songData }: { songData: Song[] }) {
     }
   };
 
+  const onEnded = () => {
+    setTrigger((trigger) => trigger + 1);
+  };
+
   return (
-    <div  className="flex min-h-screen flex-col items-center p-12">
+    <div className="flex min-h-screen flex-col items-center p-12">
       <h1 className="font-extrabold text-4xl mb-5">Music produced by Toonra</h1>
       <ul>
         {songData.map((song: Song, index) => {
@@ -42,14 +48,19 @@ function MusicComponent({ songData }: { songData: Song[] }) {
             <li
               key={index}
               onClick={() => setCurrentSong(song)}
-              className="hover:bg-slate-400 hover:text-gray-900 p-4 border border-gray-500"
+              className={`hover:bg-slate-400 hover:text-gray-900 p-4 border border-gray-500 ${currentSong.title == song.title ? 'bg-slate-900 text-gray-300 border-2 border-white' : '' }`}
             >
               {song.title}
             </li>
           );
         })}
       </ul>
-      <audio src={currentSong?.url} ref={audioRef} onTimeUpdate={onPlaying} />
+      <audio
+        src={currentSong?.url}
+        ref={audioRef}
+        onTimeUpdate={onPlaying}
+        onEnded={onEnded}
+      />
       <Player
         audioElem={audioRef}
         songs={songs}
@@ -57,6 +68,7 @@ function MusicComponent({ songData }: { songData: Song[] }) {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         setCurrentSong={setCurrentSong}
+        nextSongTigger={trigger}
       ></Player>
       <Link href="https://soundcloud.com/toonra">
         <div className="flex m-2">
