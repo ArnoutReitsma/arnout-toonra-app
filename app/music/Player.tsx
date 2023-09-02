@@ -1,4 +1,4 @@
-import React, { Ref, RefObject, useRef } from "react";
+import React, { Ref, RefObject, useEffect, useRef } from "react";
 import {
   BsFillPlayCircleFill,
   BsFillPauseCircleFill,
@@ -14,6 +14,7 @@ type PlayerProps = {
   currentSong: Song;
   setCurrentSong: (song: Song) => void;
   songs: Song[];
+  nextSongTigger: number;
 };
 
 const Player = ({
@@ -23,15 +24,24 @@ const Player = ({
   currentSong,
   setCurrentSong,
   songs,
+  nextSongTigger,
 }: PlayerProps) => {
   let clickRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (nextSongTigger) {
+      console.log("nextSongTigger");
+      skiptoNext();
+      setIsPlaying(true);
+    }
+  }, [nextSongTigger]);
 
   const PlayPause = () => {
     setIsPlaying(!isPlaying);
   };
 
   const checkWidth = (e: React.MouseEvent<HTMLElement>) => {
-    if(clickRef.current){
+    if (clickRef.current) {
       let width = clickRef.current.clientWidth;
       const offset = e.nativeEvent.offsetX;
       const divprogress = (offset / width) * 100;
@@ -63,9 +73,15 @@ const Player = ({
     <div className="w-1/2 p-4 border border-gray-500 rounded-lg text-gray-400 flex flex-col items-center justify-between bg-black mt-5">
       <div className="text-2xl">
         <p>{currentSong.title}</p>
+        {currentSong.album ? <p className="text-sm">Album: {currentSong.album}</p> : ""}
+        {currentSong.genre ? <p className="text-sm">Genre: {currentSong.genre}</p> : ""}
       </div>
       <div className="w-full">
-        <div className="w-full bg-gray-500 h-1 rounded-full cursor-pointer" onClick={checkWidth}  ref={clickRef} >
+        <div
+          className="w-full bg-gray-500 h-1 rounded-full cursor-pointer"
+          onClick={checkWidth}
+          ref={clickRef}
+        >
           <div
             className="w-0 h-full bg-green-500 rounded-full"
             style={{ width: `${currentSong.progress + "%"}` }}
@@ -73,7 +89,10 @@ const Player = ({
         </div>
       </div>
       <div className="flex items-center mt-3">
-        <BsFillSkipStartCircleFill className="action-button" onClick={skipBack} />
+        <BsFillSkipStartCircleFill
+          className="action-button"
+          onClick={skipBack}
+        />
         {isPlaying ? (
           <BsFillPauseCircleFill
             className="action-button"
@@ -82,7 +101,10 @@ const Player = ({
         ) : (
           <BsFillPlayCircleFill className="action-button" onClick={PlayPause} />
         )}
-        <BsFillSkipEndCircleFill className="action-button" onClick={skiptoNext} />
+        <BsFillSkipEndCircleFill
+          className="action-button"
+          onClick={skiptoNext}
+        />
       </div>
     </div>
   );
