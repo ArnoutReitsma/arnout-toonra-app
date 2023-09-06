@@ -5,16 +5,24 @@ import { useEffect, useRef, useState } from "react";
 import { BsSoundwave } from "react-icons/bs";
 import Player from "./Player";
 import { Song } from "./Song";
-
+function GroupedAlbumSongData(songData: Song[]) {
+  return songData.reduce((group: { [key: string]: Song[] }, item) => {
+    if (!group[item.album]) {
+      group[item.album] = [];
+    }
+    group[item.album].push(item);
+    return group;
+  }, {});
+}
 function MusicComponent({ songData }: { songData: Song[] }) {
   const [songs, setSongs] = useState(songData);
   const [currentSong, setCurrentSong] = useState(songData[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [trigger, setTrigger] = useState(0);
   let audioRef = useRef<HTMLAudioElement | null>(null);
+  let albumGroupedSongData = GroupedAlbumSongData(songData);
 
   useEffect(() => {
-    console.log('useEffect');
     if (isPlaying) {
       audioRef.current.play();
     } else {
@@ -43,19 +51,29 @@ function MusicComponent({ songData }: { songData: Song[] }) {
     <div className="flex min-h-screen flex-col items-center p-12">
       <h1 className="font-extrabold text-4xl mb-5">Music produced by Toonra</h1>
       <ul>
-        {songData.map((song: Song, index) => {
+        {Object.entries(albumGroupedSongData).map(([album, songs]) => {
           return (
-            <li
-              key={index}
-              onClick={() => setCurrentSong(song)}
-              className={`hover:bg-slate-400 hover:text-gray-900 p-4 border border-gray-500 ${currentSong.title == song.title ? 'bg-slate-900 text-gray-300 border-2 border-white' : '' }`}
-            >
-              {song.title}
-            </li>
+            <div key={album}>
+              <p>{album}</p>
+              {songs.map((song: Song, index: number) => (
+                <li
+                  key={index}
+                  onClick={() => setCurrentSong(song)}
+                  className={`hover:bg-slate-400 hover:text-gray-900 p-4 border border-gray-500 ${
+                    currentSong.title == song.title
+                      ? "bg-slate-900 text-gray-300 border-2 border-white"
+                      : ""
+                  }`}
+                >
+                  {song.title}
+                </li>
+              ))}
+            </div>
           );
         })}
       </ul>
       <audio
+        autoPlay
         src={currentSong?.url}
         ref={audioRef}
         onTimeUpdate={onPlaying}
