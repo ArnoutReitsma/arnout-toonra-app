@@ -30,9 +30,7 @@ const Player = ({
 
   useEffect(() => {
     if (nextSongTigger) {
-      console.log("nextSongTigger");
       skiptoNext();
-      setIsPlaying(true);
     }
   }, [nextSongTigger]);
 
