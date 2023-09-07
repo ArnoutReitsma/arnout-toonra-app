@@ -31,24 +31,24 @@ function Page() {
             name="name"
             placeholder="Name"
             type="text"
-            className="col-span-1 border border-gray-300 p-2 rounded-md text-black"
+            className="col-span-1 contact-input"
           ></input>
           <input
             name="email"
             placeholder="Email"
             type="email"
-            className="col-span-1 border border-gray-300 p-2 rounded-md text-black"
+            className="col-span-1 contact-input"
           ></input>
           <textarea
             name="message"
             placeholder="Message"
             rows={5}
-            className="col-span-2 border border-gray-300 p-2 rounded-md text-black"
+            className="col-span-2 contact-input"
           ></textarea>
         </div>
         <button
           type="submit"
-          className="bg-gray-700 cursor-pointer  hover:bg-white hover:text-gray-800 hover:rounded-xl transition-all duration-300 ease-linear rounded-3xl p-5 mt-3"
+          className="dark:bg-gray-700 bg-gray-400 dark cursor-pointer dark:hover:bg-white hover:bg-gray-800 hover:text-gray-200 dark:hover:text-gray-800 hover:rounded-xl transition-all duration-300 ease-linear rounded-3xl p-5 mt-3"
         >
           Send
         </button>
