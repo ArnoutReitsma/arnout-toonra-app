@@ -1,4 +1,5 @@
 import React, { Ref, RefObject, useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   BsFillPlayCircleFill,
   BsFillPauseCircleFill,
@@ -31,6 +32,7 @@ const Player = ({
   useEffect(() => {
     if (nextSongTigger) {
       skiptoNext();
+      setIsPlaying(true);
     }
   }, [nextSongTigger]);
 
@@ -68,11 +70,29 @@ const Player = ({
     audioElem.current.currentTime = 0;
   };
   return (
-    <div className="md:w-1/2 p-4 border border-gray-500 rounded-lg dark:text-gray-400 flex flex-col items-center justify-between dark:bg-black mt-5">
+    <div className="min-w-full xl:w-[60%] xl:min-w-fit p-4 border border-gray-500 rounded-lg dark:text-gray-400 flex flex-col items-center justify-between dark:bg-black mt-5">
+      {currentSong.coverUrl ? (
+        <Image
+          src={currentSong.coverUrl}
+          width={200}
+          height={200}
+          alt="cover"
+        ></Image>
+      ) : (
+        ""
+      )}
       <div className="text-2xl">
         <p>{currentSong.title}</p>
-        {currentSong.album ? <p className="text-sm">Album: {currentSong.album}</p> : ""}
-        {currentSong.genre ? <p className="text-sm">Genre: {currentSong.genre}</p> : ""}
+        {currentSong.album ? (
+          <p className="text-sm">Album: {currentSong.album}</p>
+        ) : (
+          ""
+        )}
+        {currentSong.genre ? (
+          <p className="text-sm">Genre: {currentSong.genre}</p>
+        ) : (
+          ""
+        )}
       </div>
       <div className="w-full">
         <div

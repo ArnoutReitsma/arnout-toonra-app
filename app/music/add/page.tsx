@@ -26,7 +26,7 @@ export default function PageAdd() {
     <div>
       <form
         action={onSubmit}
-        className="flex min-h-screen flex-col items-center p-12"
+        className="flex flex-col items-center p-6 md:p-12"
       >
         <h1>Add new Toonra track!</h1>
         <p>Title:</p>

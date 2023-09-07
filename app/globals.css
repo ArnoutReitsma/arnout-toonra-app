@@ -24,13 +24,20 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+details > summary::marker, /* Latest Chrome, Edge, Firefox */ 
+details > summary::-webkit-details-marker /* Safari */ {
+  display: none;
+}
+details > summary {
+  list-style: none;
+}
 
 @layer components {
   .header-button {
     @apply p-3 md:ml-5 ml-2 dark:bg-black bg-gray-500 hover:bg-white hover:text-gray-500 hover:rounded-xl transition-all duration-300 ease-linear;
   }
   .action-button {
-    @apply text-xl mx-4 cursor-pointer hover:text-white;
+    @apply text-2xl mx-4 cursor-pointer dark:hover:text-white hover:text-gray-400;
   }
   .link-card {
     @apply m-2 hover:bg-slate-200 hover:text-gray-600 border border-spacing-2 border-gray-400 rounded-xl transition-all duration-300 ease-linear [&>*]:p-3;

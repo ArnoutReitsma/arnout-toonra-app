@@ -1,6 +1,7 @@
 export interface Song {
   title: string;
   url: string;
+  coverUrl?: string;
   album?: string;
   genre?: string;
   progress?: number;

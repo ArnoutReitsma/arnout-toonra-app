@@ -48,13 +48,19 @@ function MusicComponent({ songData }: { songData: Song[] }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center p-12">
+    <div className="flex flex-col items-center p-6 md:p-12">
       <h1 className="font-extrabold text-4xl mb-5">Music produced by Toonra</h1>
-      <ul>
+      <ul className="min-w-full md:min-w-[50rem]">
         {Object.entries(albumGroupedSongData).map(([album, songs]) => {
           return (
-            <div key={album}>
-              <p>{album}</p>
+            <details
+              key={album}
+              className="border border-double border-s-4 border-gray-400 dark:border-white mb-2 cursor-pointer drop-shadow rounded-md bg-inherit px-5 py-3 text-lg"
+              open={true}
+            >
+              <summary>
+                <p>{album ? album : "None"}</p>
+              </summary>
               {songs.map((song: Song, index: number) => (
                 <li
                   key={index}
@@ -68,7 +74,7 @@ function MusicComponent({ songData }: { songData: Song[] }) {
                   {song.title}
                 </li>
               ))}
-            </div>
+            </details>
           );
         })}
       </ul>
