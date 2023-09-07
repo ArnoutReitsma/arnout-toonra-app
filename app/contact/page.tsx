@@ -23,7 +23,7 @@ function Page() {
     }
   }, [toastMessage, key]);
   return (
-    <div className="flex min-h-screen flex-col items-center p-12">
+    <div className="flex flex-col items-center p-6 md:p-12">
       <h1 className="font-extrabold text-4xl mb-5">Contact me!</h1>
       <form action={onSubmit}>
         <div className="grid grid-cols-2 gap-3 text-black">

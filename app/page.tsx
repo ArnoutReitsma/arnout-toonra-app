@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-6 md:p-24">
+    <main className="flex flex-col items-center p-6 md:p-24">
       <div className="font-extrabold text-4xl dark:text-white text-black">
         <p>WELCOME TO THE TOONRA PAGE</p>
       </div>

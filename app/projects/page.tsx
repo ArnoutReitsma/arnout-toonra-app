@@ -4,7 +4,7 @@ import { BsGithub } from "react-icons/bs";
 
 function ProjectsPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center p-12">
+    <div className="flex flex-col items-center p-6 md:p-12">
       <h1 className="font-extrabold text-4xl mb-5">Projects!</h1>
       <p>Find my projects on my github:</p>
       <Link href="https://github.com/ArnoutReitsma">

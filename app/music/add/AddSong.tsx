@@ -11,6 +11,7 @@ export const addSong = async (e: FormData) => {
   const newSong: Song = {
     title: title,
     url: url,
+    coverUrl: e.get("coverUrl")?.toString(),
     genre: e.get("genre")?.toString(),
     album: e.get("album")?.toString(),
   };

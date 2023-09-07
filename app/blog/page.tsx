@@ -3,7 +3,7 @@ import { BsInstagram, BsTwitter } from "react-icons/bs";
 
 function Blog() {
   return (
-    <div className="flex min-h-screen flex-col items-center p-12">
+    <div className="flex flex-col items-center p-6 md:p-12">
       <h1 className="font-extrabold text-4xl mb-5">Blogs and photos about stuff!</h1>
       <p>Some random shit on this page:</p>
       <Link href="https://www.instagram.com/arnoutgram/">
