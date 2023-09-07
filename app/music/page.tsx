@@ -20,7 +20,6 @@ async function pageMusic() {
 
   return (
     <div>
-      {" "}
       <MusicComponent songData={songData}></MusicComponent>
     </div>
   );
