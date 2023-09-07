@@ -59,9 +59,9 @@ function MusicComponent({ songData }: { songData: Song[] }) {
                 <li
                   key={index}
                   onClick={() => setCurrentSong(song)}
-                  className={`hover:bg-slate-400 hover:text-gray-900 p-4 border border-gray-500 ${
+                  className={`hover:bg-slate-40 p-4 border border-gray-500 ${
                     currentSong.title == song.title
-                      ? "bg-slate-900 text-gray-300 border-2 border-white"
+                      ? "dark:bg-slate-900 bg-slate-600 text-gray-300 border-2 border-gray-500 dark:border-white"
                       : ""
                   }`}
                 >
