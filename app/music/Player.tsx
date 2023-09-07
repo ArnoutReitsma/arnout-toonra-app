@@ -70,7 +70,7 @@ const Player = ({
     audioElem.current.currentTime = 0;
   };
   return (
-    <div className="w-1/2 p-4 border border-gray-500 rounded-lg text-gray-400 flex flex-col items-center justify-between bg-black mt-5">
+    <div className="md:w-1/2 p-4 border border-gray-500 rounded-lg dark:text-gray-400 flex flex-col items-center justify-between dark:bg-black mt-5">
       <div className="text-2xl">
         <p>{currentSong.title}</p>
         {currentSong.album ? <p className="text-sm">Album: {currentSong.album}</p> : ""}

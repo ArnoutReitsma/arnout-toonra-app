@@ -3,15 +3,15 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div className="font-extrabold text-4xl text-white">
+    <main className="flex min-h-screen flex-col items-center p-6 md:p-24">
+      <div className="font-extrabold text-4xl dark:text-white text-black">
         <p>WELCOME TO THE TOONRA PAGE</p>
       </div>
-      <div className="w-1/2 space-y-4 mt-3">
+      <div className="md:w-1/2 space-y-4 mt-3">
         <p>
           Hello, I'm Arnout Reitsma, a passionate full-stack developer from
           Utrecht with over 6 years of experience. Specializing in AngularJS,
-          Blazor, and NextJS, I've earned a reputation for delivering top-notch
+          Blazor, React/NextJS and C# .NET, I've earned a reputation for delivering top-notch
           software solutions.
         </p>
         <p>
@@ -35,7 +35,7 @@ export default function Home() {
       </div>
       <div className="mt-10 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <Link href="/music" className="link-card">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <h2 className={`md:mb-3 text-2xl font-semibold`}>
             Music{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -47,7 +47,7 @@ export default function Home() {
           </p>
         </Link>
         <Link href="/projects" className="link-card">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <h2 className={`md:mb-3 text-2xl font-semibold`}>
             Projects{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -58,7 +58,7 @@ export default function Home() {
           </p>
         </Link>
         <Link href="/blog" className="link-card">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <h2 className={`md:mb-3 text-2xl font-semibold`}>
             Blog{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -67,7 +67,7 @@ export default function Home() {
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Blogs, events & travel.</p>
         </Link>
         <Link href="/contact" className="link-card">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <h2 className={`md:mb-3 text-2xl font-semibold`}>
             Contact{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
