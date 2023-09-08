@@ -29,7 +29,7 @@ export default function PageAdd() {
         className="flex flex-col items-center p-6 md:p-12"
       >
         <h1>Add new Toonra track!</h1>
-        <p>Title:</p>
+        <p>Title*:</p>
         <input
           type="text"
           placeholder="Title"
@@ -37,7 +37,7 @@ export default function PageAdd() {
           className="border border-gray-300 p-2 rounded-md text-black"
           size={100}
         />
-        <p>Url:</p>
+        <p>Url*:</p>
         <input
           type="text"
           placeholder="Url"
@@ -60,6 +60,24 @@ export default function PageAdd() {
           name="album"
           className="border border-gray-300 p-2 rounded-md text-black"
           size={100}
+        />
+        <p>Cover url:</p>
+        <input
+          type="text"
+          placeholder="Cover"
+          name="coverUrl"
+          className="border border-gray-300 p-2 rounded-md text-black"
+          size={100}
+        />
+        <p>Order*:</p>
+        <input
+          type="number"
+          defaultValue={0}
+          placeholder="Order"
+          name="order"
+          className="border border-gray-300 p-2 rounded-md text-black"
+          size={100}
+          required
         />
         <br />
         <br />
