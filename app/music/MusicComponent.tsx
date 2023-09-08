@@ -7,6 +7,7 @@ import Player from "./Player";
 import { Song } from "./Song";
 function GroupedAlbumSongData(songData: Song[]) {
   return songData.reduce((group: { [key: string]: Song[] }, item) => {
+    // .sort((a, b) => a.order - b.order);
     if (!group[item.album]) {
       group[item.album] = [];
     }
@@ -64,7 +65,7 @@ function MusicComponent({ songData }: { songData: Song[] }) {
               {songs.map((song: Song, index: number) => (
                 <li
                   key={index}
-                  onClick={() => setCurrentSong(song)}
+                  onClick={() => {setCurrentSong(song); setIsPlaying(true);}}
                   className={`hover:bg-slate-40 p-4 border border-gray-500 ${
                     currentSong.title == song.title
                       ? "dark:bg-slate-900 bg-slate-600 text-gray-300 border-2 border-gray-500 dark:border-white"

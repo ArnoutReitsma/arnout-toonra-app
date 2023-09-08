@@ -14,11 +14,12 @@ export const addSong = async (e: FormData) => {
     coverUrl: e.get("coverUrl")?.toString(),
     genre: e.get("genre")?.toString(),
     album: e.get("album")?.toString(),
+    order: Number(e.get("order")?.toString()),
   };
   try {
     await setDoc(doc(db, "toonra-song-collection", newSong.title), newSong);
     return { message: "Added song" };
   } catch (e) {
-    return { message: "Failed adding song" };
+    return { message: "Failed adding song: " + e.message };
   }
 };
