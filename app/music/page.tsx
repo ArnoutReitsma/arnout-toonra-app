@@ -10,6 +10,7 @@ async function fetchSongData() {
       url: doc.data().url,
       album: doc.data().album,
       coverUrl: doc.data().coverUrl,
+      order: doc.data().order,
       genre: doc.data().genre,
     }))
     .filter((d) => d.url != "deleted");
