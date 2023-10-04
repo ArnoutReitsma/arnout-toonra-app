@@ -36,9 +36,26 @@ const Player = ({
     }
   }, [nextSongTigger]);
 
-  const PlayPause = () => {
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === ' ') {
+      e.preventDefault();
+      PlayPause();
+      isPlaying = !isPlaying;
+    }
+  }
+
+  const PlayPause = () => { 
     setIsPlaying(!isPlaying);
   };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+  
+    // Clean up the event listener when the component unmounts
+    return function cleanup() {
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  });
 
   const checkWidth = (e: React.MouseEvent<HTMLElement>) => {
     if (clickRef.current) {
