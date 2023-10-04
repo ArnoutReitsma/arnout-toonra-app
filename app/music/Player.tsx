@@ -70,33 +70,37 @@ const Player = ({
     audioElem.current.currentTime = 0;
   };
   return (
-    <div className="min-w-full xl:w-[60%] xl:min-w-fit p-4 border border-gray-500 rounded-lg dark:text-gray-400 flex flex-col items-center justify-between dark:bg-black mt-5">
-      {currentSong.coverUrl ? (
-        <Image
-          src={currentSong.coverUrl}
-          width={200}
-          height={200}
-          alt="cover"
-        ></Image>
-      ) : (
-        ""
-      )}
-      <div className="text-2xl">
-        <p>{currentSong.title}</p>
-        {currentSong.album ? (
-          <p className="text-sm">Album: {currentSong.album}</p>
+    <div className="fixed z-20 bottom-0 min-w-full xl:w-[60%] xl:min-w-fit p-4 border border-gray-500 rounded-lg dark:text-gray-400 flex flex-col items-center justify-between bg-white dark:bg-black">
+      <div className="flex relative">
+        {currentSong.coverUrl ? (
+          <Image className="mb-2 mx-2 border border-l-gray-800"
+            src={currentSong.coverUrl}
+            width={150}
+            height={150}
+            alt="cover"
+          ></Image>
         ) : (
           ""
         )}
-        {currentSong.genre ? (
-          <p className="text-sm">Genre: {currentSong.genre}</p>
-        ) : (
-          ""
-        )}
+        <div className="relative">
+          <div className="inset-x-0 bottom-0">
+            <p className="md:text-2xl">{currentSong.title}</p>
+            {currentSong.album ? (
+              <p className="text-sm">Album: {currentSong.album}</p>
+            ) : (
+              ""
+            )}
+            {currentSong.genre ? (
+              <p className="text-sm">Genre: {currentSong.genre}</p>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
       </div>
       <div className="w-full">
         <div
-          className="w-full bg-gray-500 h-1 rounded-full cursor-pointer"
+          className="w-full bg-gray-500 h-2 rounded-full cursor-pointer"
           onClick={checkWidth}
           ref={clickRef}
         >

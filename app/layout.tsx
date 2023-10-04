@@ -8,7 +8,7 @@ import Themechanger from "./components/ThemeChanger";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Arnout Page",
+  title: "Toonra Page",
   description: "Wow great page!",
 };
 
