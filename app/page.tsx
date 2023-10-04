@@ -9,7 +9,7 @@ export default function Home() {
       </div>
       <div className="md:w-1/2 space-y-4 mt-3">
         <p>
-          Hello, I'm Arnout Reitsma, a passionate full-stack developer from
+          Hello, I'm Arnout Reitsma, a passionate full-stack web developer from
           Utrecht with over 6 years of experience. Specializing in AngularJS,
           Blazor, React/NextJS and C# .NET, I've earned a reputation for delivering top-notch
           software solutions.
