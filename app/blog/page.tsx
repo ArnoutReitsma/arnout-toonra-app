@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
+import ProfilePic from "./ProfilePic";
+import Posts from "../components/Posts";
 
 function Blog() {
   return (
@@ -18,6 +20,11 @@ function Blog() {
           <BsTwitter className="text-2xl ml-1" />
         </div>
       </Link>
+
+      <div className="prose prose-xl mx-auto flex justify-between flex-col sm:flex-row">
+          <ProfilePic></ProfilePic>
+          <Posts></Posts>
+      </div>
     </div>
   );
 }
