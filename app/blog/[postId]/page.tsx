@@ -10,8 +10,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetaData({ params }: { params: { postId: string } }) {
-  const posts = getSortedPostsData();
+export function generateMetadata({ params }: { params: { postId: string } }) {
+  const posts = getSortedPostsData(); //deduped!
   const { postId } = params;
   const post = posts.find((post) => post.id === postId);
 
@@ -43,7 +43,7 @@ export default async function Post({ params }: { params: { postId: string } }) {
       <article>
         <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
         <p>
-          <Link href="/">← Back to home</Link>
+          <Link href="/blog">← Back</Link>
         </p>
       </article>
     </main>

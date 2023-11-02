@@ -1,6 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
 import MusicComponent from "./MusicComponent";
 import { db } from "./firebaseConfig";
+import { notFound } from "next/navigation";
 
 async function fetchSongData() {
   const querySnapshot = await getDocs(collection(db, "toonra-song-collection"));
@@ -14,6 +15,7 @@ async function fetchSongData() {
       genre: doc.data().genre,
     }))
     .filter((d) => d.url != "deleted");
+  if (!songsData || songsData.length == 0) notFound();
   return songsData;
 }
 

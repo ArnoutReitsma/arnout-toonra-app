@@ -1,11 +1,10 @@
-import React, { Ref, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
+import React, { RefObject, useEffect, useRef } from "react";
 import {
-  BsFillPlayCircleFill,
   BsFillPauseCircleFill,
-  BsFillSkipStartCircleFill,
-  BsSkipEndCircleFill,
+  BsFillPlayCircleFill,
   BsFillSkipEndCircleFill,
+  BsFillSkipStartCircleFill
 } from "react-icons/bs";
 import { Song } from "./Song";
 type PlayerProps = {

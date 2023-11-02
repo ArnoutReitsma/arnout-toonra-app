@@ -4,10 +4,11 @@ export default function ProfilePic() {
   return (
     <section className="w-full mx-auto">
       <Image
-        src="/arnout-reitsma-nobg.png"
-        width={200}
-        height={200}
+        src="/ArnoutTheJordanTrail2023.jpg"
+        width={250}
+        height={250}
         alt="profile"
+        className="border-4 border-black dark:border-slate-600 drop-shadow-xl shadow-black rounded-full mx-auto mt-8"
         priority={true}
       ></Image>
     </section>
