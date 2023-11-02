@@ -4,13 +4,13 @@ date: '2023-11-02'
 tags: ["travel"]
 ---
 
-Together with my friend Hylco, I hiked [The Jordan Trail](https://thejordantrail.org/) for six days, starting at Shobak and ending at Petra. This was my first multi-day hiking experience, and I really enjoyed it. Although it was tough, it was manageable. Every day of the hike, the environment changed, which was very interesting hwo it evolved. We went with a group of 25 person, which during the week I got to very well. The dynamics in the group were very good. Every camp was well set up, and the food was great! One night, I got to sleep outside, which was a great experience. 
+Together with my friend Hylco, I hiked [The Jordan Trail](https://thejordantrail.org/) for six days, starting at Shobak and ending at Petra, around 100km. This was my first multi-day hiking experience, and I really enjoyed it. Although it was tough, it was manageable. Every day of the hike, the environment changed, which was very interesting how it evolved. We went with a group of 25 person, which during the week I got to know very well. The dynamic of the group was very nice. Every camp was well set up, and the food was great! One night, I got to sleep outside, which was a compelling experience. 
+    
+After five days of hiking, we ended up at Petra, where we visited this sight for two days. The incredible structures carved by lost civilizations were super interesting! Finally, we got to experience a Turkish hamam to clean all the dirt of the last days, which was very pleasant. Before our flight back home, we visited the Dead Sea at an amazing resort. The lunch was great, and they had nice swimming pools.
 
-After five days of hiking, we ended up at Petra, where we visited this sight for two days. The incredible structures carved by lost civilizations were very interesting. Finally, we got to experience a Turkish hamam to clean all the dirt of the last days, which was very pleasant. Before our flight back home, we visited the Dead Sea at an amazing resort. The lunch was great, and they had nice swimming pools.
+The team that worked with the organization was very fascinating. They were locals to that region and had a lot of interesting stories and knowledge.
 
-The team that worked with the organization was very interesting. They were locals to that region and had a lot of interesting stories.
-
-The experience was far beyond my expectations. It really felt like I was away for a month. Although the hike had some rough terrain, it was really beautiful. The group was nice to get to know, and it was very well managed by the organization. I will definitely do this type of hike again! Maybe  [The Balkan Trail](https://thebalkantrail.com/nl/) next?
+The experience was far beyond my expectations. It really felt like I was away for a month. Although the hike had some rough terrain, it was really beautiful. The group was nice to get to know, and the whole trip was very well managed by the organization. I will definitely do this type of hike again! Maybe [The Balkan Trail](https://thebalkantrail.com/nl/) next?
 
 It was organized by [Travelbase](https://travelbase.eu/).
 
