@@ -8,7 +8,7 @@ export default function ProfilePic() {
         width={250}
         height={250}
         alt="profile"
-        className="border-4 border-black dark:border-slate-600 drop-shadow-xl shadow-black rounded-full mx-auto mt-8"
+        className="border-4 m-4 border-black dark:border-slate-600 drop-shadow-xl shadow-black rounded-full mx-auto mt-8"
         priority={true}
       ></Image>
     </section>
