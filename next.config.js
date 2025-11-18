@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        serverActions: true,
-    },
+    // Server Actions stabilized; remove experimental flag to silence deprecation warning.
     images: {
-        domains: ['firebasestorage.googleapis.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'firebasestorage.googleapis.com',
+            },
+        ],
     },
 }
 
