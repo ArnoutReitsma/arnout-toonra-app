@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="C# .NET Logo">
+  <rect x="5" y="5" width="110" height="110" rx="18" fill="#512BD4" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" fill="#fff">C#</text>
+  <text x="50%" y="82%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#B3A7E6">.NET</text>
+</svg>
