@@ -119,14 +119,14 @@ export default function Home() {
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Blogs, events & travel.</p>
         </Link>
-        <Link href="/contact" className="link-card">
+        <Link href="/sports" className="link-card">
           <h2 className={`md:mb-3 text-2xl font-semibold`}>
-            Contact{" "}
+            Sports{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Contact me.</p>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>My personal bests & races.</p>
         </Link>
       </div>
     </main>

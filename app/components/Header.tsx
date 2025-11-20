@@ -27,6 +27,9 @@ function Header() {
         <Link href="/blog" className="header-button">
           Blog
         </Link>
+        <Link href="/sports" className="header-button">
+          Sports
+        </Link>
         <Link href="/contact" className="header-button">
           Contact
         </Link>
