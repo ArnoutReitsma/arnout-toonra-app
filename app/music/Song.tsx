@@ -1,15 +1,17 @@
 import Image from "next/image";
 
 interface SongProps {
-  song: {
-    title: string;
-    url: string;
-    album: string;
-    coverUrl: string;
-    genre: string;
-  };
+  song: Song;
   isPlaying: boolean;
   onClick: () => void;
+}
+export type Song = {
+  title: string;
+  url: string;
+  album: string;
+  coverUrl: string;
+  genre: string;
+  order: number;
 }
 
 function Song({ song, isPlaying, onClick }: SongProps) {
@@ -17,8 +19,8 @@ function Song({ song, isPlaying, onClick }: SongProps) {
     <div
       onClick={onClick}
       className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all duration-300 group ${isPlaying
-          ? "bg-primary/10 border border-primary/20"
-          : "hover:bg-white/10 dark:hover:bg-white/5 border border-transparent hover:border-white/10"
+        ? "bg-primary/10 border border-primary/20"
+        : "hover:bg-white/10 dark:hover:bg-white/5 border border-transparent hover:border-white/10"
         }`}
     >
       <div className="relative w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden">
