@@ -1,6 +1,6 @@
 # Arnout-Toonra-App
 
-This is my personal website for my music/projects/photos and blogs. Its built with Next.js 13, TypeScript, and Firebase. The website is hosted on Vercel and uses Nodemailer for mailing functionality.
+This is my personal website for my music/projects/photos and blogs. Its built with Next.js 16, TypeScript, and Firebase. The website is hosted on Vercel and uses Nodemailer for mailing functionality.
 
 ## Getting Started
 
@@ -37,6 +37,8 @@ The website is now available at `http://localhost:3000`.
 - [TypeScript](https://www.typescriptlang.org/) - The language used
 - [Firebase](https://firebase.google.com/) - The database used
 - [Nodemailer](https://nodemailer.com/about/) - Used for sending emails
+
+AI tools like ChatGPT, Gemini, and GitHub Copilot were used to help with the development of this website.
 
 ## Contact
 
