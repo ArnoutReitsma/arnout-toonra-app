@@ -23,37 +23,66 @@ function Page() {
     }
   }, [toastMessage, key]);
   return (
-    <div className="flex flex-col items-center p-6 md:p-12">
-      <h1 className="font-extrabold text-4xl mb-5">Contact me!</h1>
-      <form action={onSubmit}>
-        <div className="grid grid-cols-2 gap-3 text-black">
-          <input
-            name="name"
-            placeholder="Name"
-            type="text"
-            className="col-span-1 contact-input"
-          ></input>
-          <input
-            name="email"
-            placeholder="Email"
-            type="email"
-            className="col-span-1 contact-input"
-          ></input>
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows={5}
-            className="col-span-2 contact-input"
-          ></textarea>
+    <div className="min-h-screen pt-32 pb-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div className="w-full max-w-2xl">
+        <div className="text-center mb-10 animate-fade-in">
+          <h1 className="font-heading font-extrabold text-4xl sm:text-5xl mb-4 text-gray-900 dark:text-white">
+            Get in Touch
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
+            Have a question or want to work together? Drop me a message!
+          </p>
         </div>
-        <button
-          type="submit"
-          className="dark:bg-gray-700 bg-gray-400 dark cursor-pointer dark:hover:bg-white hover:bg-gray-800 hover:text-gray-200 dark:hover:text-gray-800 hover:rounded-xl transition-all duration-300 ease-linear rounded-3xl p-5 mt-3"
-        >
-          Send
-        </button>
-      </form>
-      <ToastContainer />
+
+        <div className="glass p-8 md:p-10 rounded-3xl animate-slide-up">
+          <form action={onSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  type="text"
+                  className="contact-input"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  type="email"
+                  className="contact-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Message"
+                rows={6}
+                className="contact-input resize-none"
+                required
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-4 px-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+      <ToastContainer theme="dark" />
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function SportsPage() {
     const races = [
@@ -7,7 +9,6 @@ export default function SportsPage() {
             date: "Oct 20, 2024",
             distance: "42.2 km",
             time: "2:56:56",
-            description: "My first marathon! Sub 3 hours achieved.",
             details: [
                 { label: "Distance", value: "42.6 km" },
                 { label: "Time", value: "2h 57m 02s" },
@@ -20,7 +21,6 @@ export default function SportsPage() {
             date: "Oct 6, 2024",
             distance: "21.1 km",
             time: "1:24:56",
-            description: "Personal Record despite some cramps.",
             details: [
                 { label: "Distance", value: "21.2 km" },
                 { label: "Time", value: "1h 24m 55s" },
@@ -33,7 +33,6 @@ export default function SportsPage() {
             date: "Nov 17, 2024",
             distance: "15 km",
             time: "57:17",
-            description: "Full gas de heuvels af, epic PR!",
             details: [
                 { label: "Distance", value: "15.0 km" },
                 { label: "Time", value: "57m 17s" },
@@ -46,7 +45,6 @@ export default function SportsPage() {
             date: "June 29, 2025",
             distance: "1/4 Triathlon",
             time: "2:35:00",
-            description: "Swim, Bike, Run! 39th out of 280.",
             details: [
                 { label: "Swim (1.8km)", value: "32m 01s" },
                 { label: "Bike + Trans", value: "~1h 20m" },
@@ -57,11 +55,11 @@ export default function SportsPage() {
     ];
 
     return (
-        <main className="flex flex-col items-center p-6 md:p-24 min-h-screen">
+        <main className="min-h-screen pt-32 pb-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <div className="font-extrabold text-4xl dark:text-white text-black mb-12 text-center">
                 <h1>Sports & Personal Bests</h1>
                 <h2 className="mt-2 text-xl font-semibold tracking-tight opacity-70">
-                    Pushing limits on the road and in the water.
+                    My personal bests in various sport events.
                 </h2>
             </div>
 
@@ -96,9 +94,6 @@ export default function SportsPage() {
                                 </div>
                             </div>
 
-                            <p className="text-gray-600 dark:text-gray-300 mb-6 italic">
-                                "{race.description}"
-                            </p>
 
                             <div className="grid grid-cols-3 gap-4 border-t border-gray-100 dark:border-neutral-700 pt-4">
                                 {race.details.map((detail, i) => (
@@ -115,6 +110,27 @@ export default function SportsPage() {
                         </div>
                     </div>
                 ))}
+            </div>
+
+            <Link
+                href="https://www.strava.com/athletes/12855927"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 px-8 py-4 bg-[#FC4C02] hover:bg-[#E34402] text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-orange-500/50 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3"
+            >
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169" />
+                </svg>
+                Go to my strava profile
+            </Link>
+
+            <div className="relative w-full max-w-2xl h-64 md:h-96 mt-12 rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                    src="/arnout-sport.jpg"
+                    alt="Arnout Sports"
+                    fill
+                    className="object-cover"
+                />
             </div>
         </main>
     );

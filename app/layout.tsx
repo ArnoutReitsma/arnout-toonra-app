@@ -1,11 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import Header from "./components/Header";
 import Providers from "./components/Providers";
 import Themechanger from "./components/ThemeChanger";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   title: "WebDev - Arnout Reitsma",
@@ -15,10 +16,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-gray-100 dark:bg-neutral-900 transition-colors`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen antialiased selection:bg-primary selection:text-white relative`}>
+        <div
+          className="fixed inset-0 z-[-1] opacity-[0.06] dark:opacity-[0.10] pointer-events-none bg-repeat"
+          style={{
+            backgroundImage: "url('/circuit-board.png')",
+            backgroundSize: "900px"
+          }}
+        />
         <Providers>
-          <Header></Header>
-          <Themechanger></Themechanger>
+          <Header />
+          <div className="fixed bottom-5 right-5 z-50">
+            <Themechanger />
+          </div>
           {children}
         </Providers>
       </body>

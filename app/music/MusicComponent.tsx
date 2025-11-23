@@ -1,111 +1,75 @@
 "use client";
-
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { BsSoundwave } from "react-icons/bs";
+import { useState } from "react";
+import Song from "./Song";
 import Player from "./Player";
-import { Song } from "./Song";
-function GroupedAlbumSongData(songData: Song[]) {
-  return songData.reduce((group: { [key: string]: Song[] }, item) => {
-    // .sort((a, b) => a.order - b.order);
-    if (!group[item.album]) {
-      group[item.album] = [];
+
+interface SongData {
+  title: string;
+  url: string;
+  album: string;
+  coverUrl: string;
+  order: number;
+  genre: string;
+}
+
+function GroupedAlbumSongData(songData: SongData[]) {
+  return songData.reduce((group: { [key: string]: SongData[] }, item) => {
+    const albumName = item.album || "Singles";
+    if (!group[albumName]) {
+      group[albumName] = [];
     }
-    group[item.album].push(item);
+    group[albumName].push(item);
     return group;
   }, {});
 }
-function MusicComponent({ songData }: { songData: Song[] }) {
-  const [songs, setSongs] = useState(songData);
-  const [currentSong, setCurrentSong] = useState(songData[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [trigger, setTrigger] = useState(0);
-  let audioRef = useRef<HTMLAudioElement | null>(null);
-  let albumGroupedSongData = GroupedAlbumSongData(songData);
 
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-  }, [isPlaying]);
+function MusicComponent({ songData }: { songData: SongData[] }) {
+  const [currentSong, setCurrentSong] = useState<SongData>(songData[0]);
+  const albumGroupedSongData = GroupedAlbumSongData(songData);
 
-  const onPlaying = () => {
-    if (currentSong) {
-      const duration = audioRef.current.duration;
-      const ct = audioRef.current.currentTime;
-
-      setCurrentSong({
-        ...currentSong,
-        progress: (ct / duration) * 100,
-        length: duration,
-      });
-    }
-  };
-
-  const onEnded = () => {
-    setTrigger((trigger) => trigger + 1);
-  };
+  // Helper to ensure coverUrl exists
+  const getCoverUrl = (song: SongData) => song.coverUrl || "/arnout-reitsma-nobg.png"; // Use profile pic as fallback or a dedicated default
 
   return (
-    <div
-      className="flex flex-col items-center p-6 md:p-12"
-    >
-      <h1 className="font-extrabold text-4xl">Music produced by Toonra</h1>
-      <Link href="https://soundcloud.com/toonra">
-        <div className="flex m-3">
-          Soundcloud
-          <BsSoundwave className="text-2xl" />
+    <div className="min-h-screen pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="font-heading font-bold text-4xl mb-8 text-center text-gray-900 dark:text-white">
+          Music Collection
+        </h1>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Player Section - Sticky on Desktop */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24 h-fit">
+            <div className="glass p-6 rounded-3xl">
+              <Player currentSong={{ ...currentSong, coverUrl: getCoverUrl(currentSong) }} />
+            </div>
+          </div>
+
+          {/* Song List Section */}
+          <div className="lg:col-span-8 space-y-8">
+            {Object.entries(albumGroupedSongData).map(([album, songs]) => (
+              <div key={album} className="glass p-6 rounded-3xl animate-slide-up">
+                <h2 className="font-heading font-semibold text-2xl mb-6 px-2 flex items-center gap-3">
+                  <span className="w-1 h-8 bg-primary rounded-full"></span>
+                  {album}
+                </h2>
+                <div className="space-y-2">
+                  {songs
+                    .sort((a, b) => a.order - b.order)
+                    .map((song, index) => (
+                      <Song
+                        key={index}
+                        song={{ ...song, coverUrl: getCoverUrl(song) }}
+                        isPlaying={currentSong.title === song.title}
+                        onClick={() => setCurrentSong(song)}
+                      />
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </Link>
-      <ul className="min-w-full md:min-w-[50rem] mb-[13rem]">
-        {Object.entries(albumGroupedSongData).map(([album, songs]) => {
-          return (
-            <details
-              key={album}
-              className="border border-double border-s-4 border-gray-400 dark:border-white mb-2 cursor-pointer drop-shadow rounded-md bg-inherit px-5 py-1 text-lg"
-              open={true}
-            >
-              <summary>
-                <p>{album ? album : "None"}</p>
-              </summary>
-              {songs.map((song: Song, index: number) => (
-                <li
-                  key={index}
-                  onClick={() => {
-                    setCurrentSong(song);
-                    setIsPlaying(true);
-                  }}
-                  className={`hover:bg-slate-40 p-2 md:p-3 border text-sm md:text-base border-gray-500 ${
-                    currentSong.title == song.title
-                      ? "dark:bg-slate-900 bg-slate-600 text-gray-300 border-2 border-gray-500 dark:border-white"
-                      : ""
-                  }`}
-                >
-                  {song.title}
-                </li>
-              ))}
-            </details>
-          );
-        })}
-      </ul>
-      <audio
-        autoPlay
-        src={currentSong?.url}
-        ref={audioRef}
-        onTimeUpdate={onPlaying}
-        onEnded={onEnded}
-      />
-      <Player
-        audioElem={audioRef}
-        songs={songs}
-        currentSong={currentSong}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        setCurrentSong={setCurrentSong}
-        nextSongTigger={trigger}
-      ></Player>
+      </div>
     </div>
   );
 }
